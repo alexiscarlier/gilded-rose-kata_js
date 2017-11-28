@@ -1,5 +1,4 @@
 var Shop = require('../src/gilded_rose.js');
-var Item = require('../src/item.js');
 
 describe("Gilded Rose", function() {
 
@@ -46,6 +45,34 @@ describe("Gilded Rose", function() {
     expect(gildedRose.updateQuality()).toContain(newItem);
   });
 
+  it("deals with Backstage passes behaviour", function() {
+    item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 30}
+    newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 9, quality: 32}
+    const gildedRose = new Shop([item]);
+    expect(gildedRose.updateQuality()).toContain(newItem);
+  })
+
+  it("deals with Backstage passes behaviour", function() {
+    item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 30}
+    newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 4, quality: 33}
+    const gildedRose = new Shop([item]);
+    expect(gildedRose.updateQuality()).toContain(newItem);
+  })
+
+  it("deals with Backstage passes behaviour", function() {
+    item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 30}
+    newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: -1, quality: 0}
+    const gildedRose = new Shop([item]);
+    expect(gildedRose.updateQuality()).toContain(newItem);
+  })
+
+  it("deals with Sulfuras behaviour", function() {
+    item = { name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80}
+    newItem = { name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80}
+    const gildedRose = new Shop([item]);
+    expect(gildedRose.updateQuality()).toContain(newItem);
+  })
+
   // it("Works for Sulfuras behaviour", function() {
   //   const gildedRose = new Shop([ new Item("Sulfuras", 0, 50)]);
   //   const items = gildedRose.updateQuality();
@@ -53,10 +80,5 @@ describe("Gilded Rose", function() {
   //   expect(items[0].sellIn).toEqual(0);
   // });
 
-  // it("Backstage passes", function() {
-  //   const gildedRose = new Shop([ new Item("Backstage passes", 30, 30)]);
-  //   const items = gildedRose.updateQuality();
-  //   expect(items[0].quality).toEqual(50);
-  //   expect(items[0].sellIn).toEqual(0);
-  // });
+
 });
