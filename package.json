@@ -1,0 +1,21 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "grunt-template-jasmine-istanbul": "^0.5.0",
+    "nyc": "^11.3.0"
+  },
+  "devDependencies": {
+    "jasmine": "^2.8.0"
+  },
+  "scripts": {
+    "test": "nyc jasmine"
+  },
+  "author": "",
+  "license": "ISC"
+}
