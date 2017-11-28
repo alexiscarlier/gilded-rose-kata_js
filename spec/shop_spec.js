@@ -63,14 +63,6 @@ describe("Shop", function() {
     const gildedRose = new Shop([item]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   })
-  //
-  // it("deals with Backstage passes behaviour", function() {
-  //   item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 40}
-  //   newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 4, quality: 43}
-  //   const gildedRose = new Shop([item]);
-  //   expect(gildedRose.updateQuality()).toContain(newItem);
-  // })
-
 
   it("deals with Backstage passes behaviour", function() {
     item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 30}
@@ -106,13 +98,4 @@ describe("Shop", function() {
     const gildedRose = new Shop([item]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   })
-
-  // it("Works for Sulfuras behaviour", function() {
-  //   const gildedRose = new Shop([ new Item("Sulfuras", 0, 50)]);
-  //   const items = gildedRose.updateQuality();
-  //   expect(items[0].quality).toEqual(50);
-  //   expect(items[0].sellIn).toEqual(0);
-  // });
-
-
 });
