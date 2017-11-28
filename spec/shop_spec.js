@@ -1,6 +1,11 @@
-var Shop = require('../src/gilded_rose.js');
+var Shop = require('../src/shop.js');
 
-describe("Gilded Rose", function() {
+describe("Shop", function() {
+
+  it("is initialized with items as an empty array by default", function() {
+    const gildedRose = new Shop();
+    expect(gildedRose.items[0]).toBe(undefined);
+  })
 
   it("should foo", function() {
     item = { name: "foo", sellIn: 0, quality: 0 }
@@ -10,7 +15,7 @@ describe("Gilded Rose", function() {
     // this test is different from others. Keeping as comparison for when reviewing
   });
 
-  it("decreaes the sell in and quality for normal items", function() {
+  it("decreases the sell in and quality for normal items", function() {
     item = { name: "Fake Item", sellIn: 1, quality: 5 }
     newItem = { name: "Fake Item", sellIn: 0, quality: 4}
     const gildedRose = new Shop([ item ]);
@@ -24,14 +29,14 @@ describe("Gilded Rose", function() {
     expect(gildedRose.updateQuality()).toContain(newItem);
   });
 
-  it("when passes sell by date, quality ofincreaes twice as fast Aged Brie", function() {
+  it("when passes sell by date, quality of increaes twice as fast Aged Brie", function() {
     item = { name: "Aged Brie", sellIn: -1, quality: 10}
     newItem = { name: "Aged Brie", sellIn: -2, quality: 12}
     const gildedRose = new Shop([item]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   });
 
-  it("for a normal item, qualit degrades twice as fast when past sell by date", function() {
+  it("for a normal item, quality degrades twice as fast when past sell by date", function() {
     item = { name: "Fake Item", sellIn: -1, quality: 10 }
     newItem = { name: "Fake Item", sellIn: -2, quality: 8}
     const gildedRose = new Shop([ item ]);
@@ -53,6 +58,21 @@ describe("Gilded Rose", function() {
   })
 
   it("deals with Backstage passes behaviour", function() {
+    item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 15, quality: 30}
+    newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 14, quality: 31}
+    const gildedRose = new Shop([item]);
+    expect(gildedRose.updateQuality()).toContain(newItem);
+  })
+  //
+  // it("deals with Backstage passes behaviour", function() {
+  //   item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 40}
+  //   newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 4, quality: 43}
+  //   const gildedRose = new Shop([item]);
+  //   expect(gildedRose.updateQuality()).toContain(newItem);
+  // })
+
+
+  it("deals with Backstage passes behaviour", function() {
     item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 30}
     newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 4, quality: 33}
     const gildedRose = new Shop([item]);
@@ -66,9 +86,23 @@ describe("Gilded Rose", function() {
     expect(gildedRose.updateQuality()).toContain(newItem);
   })
 
+  it("deals with Backstage passes behaviour", function() {
+    item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 49}
+    newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 4, quality: 50}
+    const gildedRose = new Shop([item]);
+    expect(gildedRose.updateQuality()).toContain(newItem);
+  })
+
   it("deals with Sulfuras behaviour", function() {
     item = { name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80}
     newItem = { name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80}
+    const gildedRose = new Shop([item]);
+    expect(gildedRose.updateQuality()).toContain(newItem);
+  })
+
+  it("deals with Sulfuras behaviour", function() {
+    item = { name: "Sulfuras, Hand of Ragnaros", sellIn: -1, quality: 80}
+    newItem = { name: "Sulfuras, Hand of Ragnaros", sellIn: -1, quality: 80}
     const gildedRose = new Shop([item]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   })
