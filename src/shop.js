@@ -22,22 +22,16 @@ class Shop {
     item.sellIn -= 1;
   }
 
-  // normalUpdateQuality() {
-  //   for (var i = 0; i < this.items.length; i++) {
-  //
-  //   }
-  // }
+
   backstageUpdateQuality(item) {
-    if (item.sellIn < 11 && item.quality < 50) {
+    if (item.sellIn < 6 && item.quality < 50) {
+      item.quality += 2;
+    }
+    else if (item.sellIn < 11 && item.quality < 50) {
       this.incrementQuality(item);
     }
   }
 
-  // if (this.items[i].sellIn < 11) {
-  //   if (this.items[i].quality < 50) {
-//   this.incrementQuality(this.items[i]);
-// }
-// }
 
 
   updateQuality() {
@@ -50,11 +44,6 @@ class Shop {
           this.incrementQuality(this.items[i]);
           if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
             this.backstageUpdateQuality(this.items[i]);
-            if (this.items[i].sellIn < 6) {
-              if (this.items[i].quality < 50) {
-                this.incrementQuality(this.items[i]);
-              }
-            }
           }
         }
       }
