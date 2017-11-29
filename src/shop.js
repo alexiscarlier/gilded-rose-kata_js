@@ -12,20 +12,48 @@ class Shop {
     item.quality -= 1;
   }
 
+  incrementQuality(item) {
+    item.quality += 1;
+  }
+
   decrementSellIn(item) {
     item.sellIn -= 1;
+  }
+
+    qualityToZero(item) {
+      item.quality = 0;
+    }
+
+  normalItemUpdate(item) {
+    this.decrementQuality(item);
+    this.decrementSellIn(item);
+    if (item.sellIn < 0) {
+      this.decrementQuality(item);
+    }
+    if (item.quality < 0) {
+      this.qualityToZero(item);
+    }
+  }
+
+  isAgedBrie(item) {
+    return item == 'Aged Brie';
+  }
+
+  agedBrieUpdate(item) {
+    this.incrementQuality(item);
+    this.decrementSellIn(item);
   }
 
   updateQuality() {
     for (var i = 0; i < this.items.length; i++)
       if (this.isNormalItem(this.items[i])) {
-        this.decrementQuality(this.items[i]);
-        this.decrementSellin(this.items[i]);
-
+        this.normalItemUpdate(this.items[i]);
+      }
+      if (this.isAgedBrie(this.items[i])) {
+        this.agedBrieUpdate(this.items[i]);
       }
       return this.items;
   }
-
 }
 module.exports = Shop;
 
