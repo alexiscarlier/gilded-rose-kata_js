@@ -7,12 +7,26 @@ describe("Shop", function() {
     expect(gildedRose.items[0]).toBe(undefined);
   })
 
+  it("is initialized with a names of exceptions property", function() {
+    const gildedRose = new Shop();
+    expect(gildedRose.namesOfExceptions[0]).toBe('Aged Brie');
+    expect(gildedRose.namesOfExceptions[1]).toBe('Backstage passes to a TAFKAL80ETC concert');
+    expect(gildedRose.namesOfExceptions[2]).toBe('Sulfuras, Hand of Ragnaros');
+  })
+
   it("should foo", function() {
     item = { name: "foo", sellIn: 0, quality: 0 }
     const gildedRose = new Shop([ item ]);
     const items = gildedRose.updateQuality();
     expect(items[0].name).toEqual("foo");
     // this test is different from others. Keeping as comparison for when reviewing
+  });
+
+  it("decreases the sell in and quality for normal items", function() {
+    item = { name: "Fake Item", sellIn: -1, quality: 0 }
+    newItem = { name: "Fake Item", sellIn: -2, quality: 0}
+    const gildedRose = new Shop([ item ]);
+    expect(gildedRose.updateQuality()).toContain(newItem);
   });
 
   it("decreases the sell in and quality for normal items", function() {
