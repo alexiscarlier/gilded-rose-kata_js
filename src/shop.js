@@ -57,11 +57,24 @@ class Shop {
     if (item.sellIn < 0) {
       this.incrementQuality(item);
     }
+    if (item.quality > 50) {
+      item.quality = 50;
+    }
   }
 
   backstagePassUpdate(item) {
-    this.decrementSellIn(item);
-    this.qualityToZero(item);
+    // if (item.sellIn < 0) {
+    //   this.decrementSellIn(item);
+    //   this.qualityToZero(item);
+    // }
+    if (item.sellIn < 6) {
+      this.decrementSellIn(item);
+      item.quality -= 3;
+    }
+    else if (item.sellIn < 11) {
+      this.decrementSellIn(item);
+      item.quality -= 2;
+    }
   }
 
   // sulfurusUpdate(item) {
