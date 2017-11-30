@@ -6,11 +6,10 @@ class Shop {
   constructor(items=[]){
     this.items = items;
     this.namesOfExceptions = ['Aged Brie', 'Backstage passes to a TAFKAL80ETC concert', 'Sulfuras, Hand of Ragnaros'];
+    this.qualityLimit = 50;
   }
 
-  isNormalItem(item) {
-    return this.namesOfExceptions.includes(item.name) === false;
-  }
+// general functions
 
   decrementQuality(item) {
     item.quality -= 1;
@@ -28,6 +27,16 @@ class Shop {
     item.quality = 0;
   }
 
+  qualityToLimit(item) {
+    item.quality = 50;
+  }
+
+  // Normal item functions
+
+  isNormalItem(item) {
+    return this.namesOfExceptions.includes(item.name) === false;
+  }
+
   normalItemUpdate(item) {
     this.decrementQuality(item);
     this.decrementSellIn(item);
@@ -39,12 +48,10 @@ class Shop {
     }
   }
 
+  // Aged brie functions
+
   isAgedBrie(item) {
     return item.name === 'Aged Brie';
-  }
-
-  isBackstagePass(item) {
-    return item.name === 'Backstage passes to a TAFKAL80ETC concert';
   }
 
   agedBrieUpdate(item) {
@@ -53,9 +60,15 @@ class Shop {
     if (item.sellIn < 0) {
       this.incrementQuality(item);
     }
-    if (item.quality > 50) {
-      item.quality = 50;
+    if (item.quality > this.qualityLimit) {
+      this.qualityToLimit(item);
     }
+  }
+
+  // backstage pass functions
+
+  isBackstagePass(item) {
+    return item.name === 'Backstage passes to a TAFKAL80ETC concert';
   }
 
   backstagePastSellIn(item) {
@@ -91,8 +104,8 @@ class Shop {
     else {
       this.backstageSellNormal(item);
     }
-    if (item.quality > 50) {
-      item.quality = 50;
+    if (item.quality > this.qualityLimit) {
+      this.qualityToLimit(item);
     }
   }
 
