@@ -79,6 +79,13 @@ class Shop {
       this.decrementSellIn(item);
       this.incrementQuality(item);
     }
+    if (item.quality > 50) {
+      item.quality = 50;
+    }
+    // if (item.sellIn < 0) {
+    //   this.decrementSellIn(item);
+    //   this.qualityToZero(item);
+    // }
   }
 
   // sulfurusUpdate(item) {
