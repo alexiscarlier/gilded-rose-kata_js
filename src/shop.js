@@ -58,22 +58,38 @@ class Shop {
     }
   }
 
+  backstagePastSellIn(item) {
+    this.decrementSellIn(item);
+    this.qualityToZero(item);
+  }
+
+  backstageSellSoon(item) {
+    this.decrementSellIn(item);
+    item.quality += 3;
+  }
+
+  backstageSellSoonish(item) {
+    this.decrementSellIn(item);
+    item.quality += 2;
+  }
+
+  backstageSellNormal(item) {
+    this.decrementSellIn(item);
+    this.incrementQuality(item);
+  }
+
   backstagePassUpdate(item) {
     if (item.sellIn <= 0) {
-      this.decrementSellIn(item);
-      this.qualityToZero(item);
+      this.backstagePastSellIn(item);
     }
     else if (item.sellIn < 6) {
-      this.decrementSellIn(item);
-      item.quality += 3;
+      this.backstageSellSoon(item);
     }
     else if (item.sellIn < 11) {
-      this.decrementSellIn(item);
-      item.quality += 2;
+      this.backstageSellSoonish(item);
     }
     else {
-      this.decrementSellIn(item);
-      this.incrementQuality(item);
+      this.backstageSellNormal(item);
     }
     if (item.quality > 50) {
       item.quality = 50;
