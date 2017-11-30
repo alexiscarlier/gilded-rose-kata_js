@@ -1,11 +1,7 @@
-// dont need to explicitly program sulfuras behaviour
-// because it just returns itself
-// My normal item function works, but not the rest
-
 class Shop {
   constructor(items=[]){
     this.items = items;
-    this.namesOfExceptions = ['Aged Brie', 'Backstage passes to a TAFKAL80ETC concert', 'Sulfuras, Hand of Ragnaros'];
+    this.namesOfExceptions = ['Aged Brie', 'Backstage passes to a TAFKAL80ETC concert', 'Sulfuras, Hand of Ragnaros', 'Conjured'];
     this.qualityLimit = 50;
   }
 
@@ -29,6 +25,23 @@ class Shop {
 
   qualityToLimit(item) {
     item.quality = 50;
+  }
+
+  // Conjured item functions
+
+  isConjuredItem(item) {
+    return item.name === 'Conjured';
+  }
+
+  conjuredItemUpdate(item) {
+    item.quality -= 2;
+    this.decrementSellIn(item);
+    if (item.sellIn < 0) {
+      item.quality -= 2;
+    }
+    if (item.quality < 0) {
+      this.qualityToZero(item);
+    }
   }
 
   // Normal item functions
@@ -119,6 +132,9 @@ class Shop {
       }
       if (this.isBackstagePass(this.items[i])) {
         this.backstagePassUpdate(this.items[i]);
+      }
+      if (this.isConjuredItem(this.items[i])) {
+        this.conjuredItemUpdate(this.items[i]);
       }
     }
     return this.items;
