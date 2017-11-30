@@ -69,11 +69,11 @@ class Shop {
     // }
     if (item.sellIn < 6) {
       this.decrementSellIn(item);
-      item.quality -= 3;
+      item.quality += 3;
     }
     else if (item.sellIn < 11) {
       this.decrementSellIn(item);
-      item.quality -= 2;
+      item.quality += 2;
     }
   }
 
