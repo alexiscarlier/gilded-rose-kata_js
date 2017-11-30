@@ -37,8 +37,8 @@ describe("Shop", function() {
   });
 
   it("increases in quality if is Aged Brie", function() {
-    item = { name: "Aged Brie", sellIn: 3, quality: 10 }
-    newItem = { name: "Aged Brie", sellIn: 2, quality: 11}
+    item = { name: 'Aged Brie', sellIn: 3, quality: 10 }
+    newItem = { name: 'Aged Brie', sellIn: 2, quality: 11}
     const gildedRose = new Shop([ item ]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   });

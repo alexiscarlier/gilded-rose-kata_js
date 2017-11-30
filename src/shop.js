@@ -1,3 +1,7 @@
+// dont need to explicitly program sulfuras behaviour
+// because it just returns itself
+// My normal item function works, but not the rest
+
 class Shop {
   constructor(items=[]){
     this.items = items;
@@ -20,9 +24,9 @@ class Shop {
     item.sellIn -= 1;
   }
 
-    qualityToZero(item) {
-      item.quality = 0;
-    }
+  qualityToZero(item) {
+    item.quality = 0;
+  }
 
   normalItemUpdate(item) {
     this.decrementQuality(item);
@@ -36,25 +40,54 @@ class Shop {
   }
 
   isAgedBrie(item) {
-    return item == 'Aged Brie';
+    return item.name === 'Aged Brie';
+  }
+
+  isSulfurus(item) {
+    return item === 'Sulfuras, Hand of Ragnaros';
+  }
+
+  isBackstagePass(item) {
+    return item.name === 'Backstage passes to a TAFKAL80ETC concert';
   }
 
   agedBrieUpdate(item) {
     this.incrementQuality(item);
     this.decrementSellIn(item);
+    if (item.sellIn < 0) {
+      this.incrementQuality(item);
+    }
   }
 
+  backstagePassUpdate(item) {
+    this.decrementSellIn(item);
+    this.qualityToZero(item);
+  }
+
+  // sulfurusUpdate(item) {
+  //   item;
+  // }
+
   updateQuality() {
-    for (var i = 0; i < this.items.length; i++)
+    for (var i = 0; i < this.items.length; i++) {
       if (this.isNormalItem(this.items[i])) {
         this.normalItemUpdate(this.items[i]);
       }
       if (this.isAgedBrie(this.items[i])) {
         this.agedBrieUpdate(this.items[i]);
       }
-      return this.items;
+      if (this.isBackstagePass(this.items[i])) {
+        this.backstagePassUpdate(this.items[i]);
+      }
+      // if(this.isSulfurus(this.items[i])) {
+      //   this.sulfurusUpdate(this.items[i]);
+      // }
+    }
+    return this.items;
   }
+
 }
+
 module.exports = Shop;
 
 //   decrementQuality(item) {
