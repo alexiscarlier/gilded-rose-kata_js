@@ -33,16 +33,16 @@ class Shop {
     return item.name === 'Conjured';
   }
 
-  conjuredItemUpdate(item) {
-    item.quality -= 2;
-    this.decrementSellIn(item);
-    if (item.sellIn < 0) {
-      item.quality -= 2;
-    }
-    if (item.quality < 0) {
-      this.qualityToZero(item);
-    }
-  }
+  // conjuredItemUpdate(item) {
+  //   item.quality -= 2;
+  //   this.decrementSellIn(item);
+  //   if (item.sellIn < 0) {
+  //     item.quality -= 2;
+  //   }
+  //   if (item.quality < 0) {
+  //     this.qualityToZero(item);
+  //   }
+  // }
 
   // Normal item functions
 
@@ -104,17 +104,15 @@ class Shop {
     for (var i = 0; i < this.items.length; i++) {
       if (this.isNormalItem(this.items[i])) {
         this.items[i].normalItemUpdate();
-        // this.normalItemUpdate(this.items[i]);
       }
       if (this.isAgedBrie(this.items[i])) {
         this.items[i].agedBrieUpdate();
-        // this.agedBrieUpdate(this.items[i]);
       }
       if (this.isBackstagePass(this.items[i])) {
         this.backstagePassUpdate(this.items[i]);
       }
       if (this.isConjuredItem(this.items[i])) {
-        this.conjuredItemUpdate(this.items[i]);
+        this.items[i].conjuredItemUpdate();
       }
     }
     return this.items;

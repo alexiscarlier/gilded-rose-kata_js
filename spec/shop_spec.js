@@ -25,22 +25,28 @@ describe("Shop", function() {
   });
 
   it("decreases the quality of conjured items twice as fast as normal items", function() {
-    item = { name: 'Conjured', sellIn: 1, quality: 5 };
-    newItem = { name: 'Conjured', sellIn: 0, quality: 3};
+    // item = { name: 'Conjured', sellIn: 1, quality: 5 };
+    // newItem = { name: 'Conjured', sellIn: 0, quality: 3};
+    item = new Item("Conjured", 1, 5);
+    newItem = new Item("Conjured", 0, 3);
     const gildedRose = new Shop([ item ]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   });
 
   it("decreases the quality of conjured items twice as fast as normal items", function() {
-    item = { name: 'Conjured', sellIn: -1, quality: 5 };
-    newItem = { name: 'Conjured', sellIn: -2, quality: 1};
+    // item = { name: 'Conjured', sellIn: -1, quality: 5 };
+    // newItem = { name: 'Conjured', sellIn: -2, quality: 1};
+    item = new Item("Conjured", -1, 5);
+    newItem = new Item("Conjured", -2, 1);
     const gildedRose = new Shop([ item ]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   });
 
   it("decreases the quality of conjured items twice as fast as normal items", function() {
-    item = { name: 'Conjured', sellIn: -1, quality: 0};
-    newItem = { name: 'Conjured', sellIn: -2, quality: 0};
+    // item = { name: 'Conjured', sellIn: -1, quality: 0};
+    // newItem = { name: 'Conjured', sellIn: -2, quality: 0};
+    item = new Item("Conjured", -1, 0);
+    newItem = new Item("Conjured", -2, 0);
     const gildedRose = new Shop([ item ]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   });
