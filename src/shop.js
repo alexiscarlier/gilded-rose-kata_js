@@ -50,32 +50,10 @@ class Shop {
     return this.namesOfExceptions.includes(item.name) === false;
   }
 
-  normalItemUpdate(item) {
-    this.decrementQuality(item);
-    this.decrementSellIn(item);
-    if (item.sellIn < 0) {
-      this.decrementQuality(item);
-    }
-    if (item.quality < 0) {
-      this.qualityToZero(item);
-    }
-  }
-
   // Aged brie functions
 
   isAgedBrie(item) {
     return item.name === 'Aged Brie';
-  }
-
-  agedBrieUpdate(item) {
-    this.incrementQuality(item);
-    this.decrementSellIn(item);
-    if (item.sellIn < 0) {
-      this.incrementQuality(item);
-    }
-    if (item.quality > this.qualityLimit) {
-      this.qualityToLimit(item);
-    }
   }
 
   // backstage pass functions
@@ -125,10 +103,12 @@ class Shop {
   updateQuality() {
     for (var i = 0; i < this.items.length; i++) {
       if (this.isNormalItem(this.items[i])) {
-        this.normalItemUpdate(this.items[i]);
+        this.items[i].normalItemUpdate();
+        // this.normalItemUpdate(this.items[i]);
       }
       if (this.isAgedBrie(this.items[i])) {
-        this.agedBrieUpdate(this.items[i]);
+        this.items[i].agedBrieUpdate();
+        // this.agedBrieUpdate(this.items[i]);
       }
       if (this.isBackstagePass(this.items[i])) {
         this.backstagePassUpdate(this.items[i]);

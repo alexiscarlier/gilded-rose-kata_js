@@ -1,4 +1,5 @@
 var Shop = require('../src/shop.js');
+var Item = require('../src/item.js');
 
 describe("Shop", function() {
 
@@ -16,7 +17,8 @@ describe("Shop", function() {
   })
 
   it("should foo", function() {
-    item = { name: "foo", sellIn: 0, quality: 0 };
+    item = new Item("foo", 0, 0);
+    // item = { name: "foo", sellIn: 0, quality: 0 };
     const gildedRose = new Shop([ item ]);
     const items = gildedRose.updateQuality();
     expect(items[0].name).toEqual("foo");
@@ -44,43 +46,55 @@ describe("Shop", function() {
   });
 
   it("decreases the sell in and quality for normal items", function() {
-    item = { name: "Fake Item", sellIn: -1, quality: 0 };
-    newItem = { name: "Fake Item", sellIn: -2, quality: 0};
+    // item = { name: "Fake Item", sellIn: -1, quality: 0 };
+    // newItem = { name: "Fake Item", sellIn: -2, quality: 0};
+    item = new Item("Fake Item", -1, 0);
+    newItem = new Item("Fake Item", -2, 0);
     const gildedRose = new Shop([ item ]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   });
 
   it("decreases the sell in and quality for normal items", function() {
-    item = { name: "Fake Item", sellIn: 1, quality: 5 };
-    newItem = { name: "Fake Item", sellIn: 0, quality: 4};
+    // item = { name: "Fake Item", sellIn: 1, quality: 5 };
+    // newItem = { name: "Fake Item", sellIn: 0, quality: 4};
+    item = new Item("Fake Item", 1, 5);
+    newItem = new Item("Fake Item", 0, 4);
     const gildedRose = new Shop([ item ]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   });
 
   it("increases in quality if is Aged Brie", function() {
-    item = { name: 'Aged Brie', sellIn: 3, quality: 10 };
-    newItem = { name: 'Aged Brie', sellIn: 2, quality: 11};
+    // item = { name: 'Aged Brie', sellIn: 3, quality: 10 };
+    // newItem = { name: 'Aged Brie', sellIn: 2, quality: 11};
+    item = new Item("Aged Brie", 3, 10);
+    newItem = new Item("Aged Brie", 2, 11);
     const gildedRose = new Shop([ item ]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   });
 
   it("when passes sell by date, quality of increaes twice as fast Aged Brie", function() {
-    item = { name: "Aged Brie", sellIn: -1, quality: 10};
-    newItem = { name: "Aged Brie", sellIn: -2, quality: 12};
+    // item = { name: "Aged Brie", sellIn: -1, quality: 10};
+    // newItem = { name: "Aged Brie", sellIn: -2, quality: 12};
+    item = new Item("Aged Brie", -1, 10);
+    newItem = new Item("Aged Brie", -2, 12);
     const gildedRose = new Shop([item]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   });
 
   it("for a normal item, quality degrades twice as fast when past sell by date", function() {
-    item = { name: "Fake Item", sellIn: -1, quality: 10 };
-    newItem = { name: "Fake Item", sellIn: -2, quality: 8};
+    // item = { name: "Fake Item", sellIn: -1, quality: 10 };
+    // newItem = { name: "Fake Item", sellIn: -2, quality: 8};
+    item = new Item("Fake Item", -1, 10);
+    newItem = new Item("Fake Item", -2, 8);
     const gildedRose = new Shop([ item ]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   });
 
   it("an item cannot have quality of more than 50", function() {
-    item = { name: "Aged Brie", sellIn: -1, quality: 50 };
-    newItem = { name: "Aged Brie", sellIn: -2, quality: 50};
+    // item = { name: "Aged Brie", sellIn: -1, quality: 50 };
+    // newItem = { name: "Aged Brie", sellIn: -2, quality: 50};
+    item = new Item("Aged Brie", -1, 50);
+    newItem = new Item("Aged Brie", -2, 50);
     const gildedRose = new Shop([item]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   });
