@@ -106,36 +106,46 @@ describe("Shop", function() {
   });
 
   it("deals with Backstage passes behaviour", function() {
-    item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 30};
-    newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 9, quality: 32};
+    // item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 30};
+    // newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 9, quality: 32};
+    item = new Item("Backstage passes to a TAFKAL80ETC concert", 10, 30);
+    newItem = new Item("Backstage passes to a TAFKAL80ETC concert", 9, 32);
     const gildedRose = new Shop([item]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   });
 
   it("deals with Backstage passes behaviour", function() {
-    item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 15, quality: 30};
-    newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 14, quality: 31};
+    // item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 15, quality: 30};
+    // newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 14, quality: 31};
+    item = new Item("Backstage passes to a TAFKAL80ETC concert", 15, 30);
+    newItem = new Item("Backstage passes to a TAFKAL80ETC concert", 14, 31);
     const gildedRose = new Shop([item]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   });
 
   it("deals with Backstage passes behaviour", function() {
-    item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 30};
-    newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 4, quality: 33};
+    // item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 30};
+    // newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 4, quality: 33};
+    item = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 30);
+    newItem = new Item("Backstage passes to a TAFKAL80ETC concert", 4, 33);
     const gildedRose = new Shop([item]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   });
 
   it("deals with Backstage passes behaviour", function() {
-    item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 30};
-    newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: -1, quality: 0};
+    // item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 30};
+    // newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: -1, quality: 0};
+    item = new Item("Backstage passes to a TAFKAL80ETC concert", 0, 30);
+    newItem = new Item("Backstage passes to a TAFKAL80ETC concert", -1, 0);
     const gildedRose = new Shop([item]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   });
 
   it("deals with Backstage passes behaviour", function() {
-    item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 49};
-    newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 4, quality: 50};
+    // item = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 49};
+    // newItem = { name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 4, quality: 50};
+    item = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49);
+    newItem = new Item("Backstage passes to a TAFKAL80ETC concert", 4, 50);
     const gildedRose = new Shop([item]);
     expect(gildedRose.updateQuality()).toContain(newItem);
   });
