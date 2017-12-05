@@ -1,42 +1,30 @@
-var Item = require('../src/item.js');
+var AgedBrie = require('../src/agedBrie.js');
 
-class BackstagePass extends Item {
+class BackstagePass extends AgedBrie {
   update() {
     if (this.sellIn <= 0) {
-      this.backstagePastSellIn();
+      this.losesValue();
     }
     else if (this.sellIn < 6) {
-      this.backstageSellSoon();
+      this.tripleImprovement();
     }
     else if (this.sellIn < 11) {
-      this.backstageSellSoonish();
+      this.doubleImprovement();
     }
     else {
-      this.backstageSellNormal();
+      this.normalImprovement();
     }
-    if (this.quality > 50) {
-      this.quality = 50;
-    }
+    this.boundQuality();
   }
 
-  backstagePastSellIn() {
+  tripleImprovement() {
+    this.quality += 3;
+    this.sellIn -= 1;
+  }
+
+  losesValue() {
     this.sellIn -= 1;
     this.quality = 0;
-  }
-
-  backstageSellSoon() {
-    this.sellIn -= 1;
-    this.quality += 3;
-  }
-
-  backstageSellSoonish() {
-    this.sellIn -= 1;
-    this.quality += 2;
-  }
-
-  backstageSellNormal(item) {
-    this.sellIn -= 1;
-    this.quality += 1;
   }
 }
 

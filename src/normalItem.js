@@ -24,6 +24,8 @@ class NormalItem extends Item {
       this.quality = 50;
     }
   }
+
+
 }
 
 module.exports = NormalItem;
