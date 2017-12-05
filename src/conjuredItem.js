@@ -4,13 +4,9 @@ var NormalItem = require('../src/normalItem.js');
 class ConjuredItem extends NormalItem {
   update() {
     this.doubleDegradation();
-    // this.quality -= 2;
-    // this.sellIn -= 1;
+    this.boundQuality();
     if (this.sellIn < 0) {
       this.quality -= 2;
-    }
-    if (this.quality < 0) {
-      this.quality = 0;
     }
   }
 }
