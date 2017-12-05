@@ -1,18 +1,20 @@
+var Item = require('../src/item.js');
+
 class BackstagePass extends Item {
-  itemTomorrow() {
+  update() {
     if (this.sellIn <= 0) {
       this.backstagePastSellIn();
     }
-    else if (item.sellIn < 6) {
+    else if (this.sellIn < 6) {
       this.backstageSellSoon();
     }
-    else if (item.sellIn < 11) {
+    else if (this.sellIn < 11) {
       this.backstageSellSoonish();
     }
     else {
       this.backstageSellNormal();
     }
-    if (item.quality > 50) {
+    if (this.quality > 50) {
       this.quality = 50;
     }
   }
@@ -36,5 +38,6 @@ class BackstagePass extends Item {
     this.sellIn -= 1;
     this.quality += 1;
   }
-
 }
+
+module.exports = BackstagePass;
