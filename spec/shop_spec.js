@@ -24,20 +24,3 @@
 //     expect(items[0].name).toEqual("foo");
 //   });
 //
-
-//
-//
-//   it("deals with Sulfuras behaviour", function() {
-//     item = { name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80};
-//     newItem = { name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80};
-//     const gildedRose = new Shop([item]);
-//     expect(gildedRose.updateQuality()).toContain(newItem);
-//   });
-//
-//   it("deals with Sulfuras behaviour", function() {
-//     item = { name: "Sulfuras, Hand of Ragnaros", sellIn: -1, quality: 80};
-//     newItem = { name: "Sulfuras, Hand of Ragnaros", sellIn: -1, quality: 80};
-//     const gildedRose = new Shop([item]);
-//     expect(gildedRose.updateQuality()).toContain(newItem);
-//   });
-// });
