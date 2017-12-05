@@ -1,9 +1,11 @@
 var Item = require('../src/item.js');
+var NormalItem = require('../src/normalItem.js');
 
-class ConjuredItem extends Item {
+class ConjuredItem extends NormalItem {
   update() {
-    this.quality -= 2;
-    this.sellIn -= 1;
+    this.doubleDegradation();
+    // this.quality -= 2;
+    // this.sellIn -= 1;
     if (this.sellIn < 0) {
       this.quality -= 2;
     }
