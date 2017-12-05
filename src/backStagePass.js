@@ -1,6 +1,6 @@
-var AgedBrie = require('../src/agedBrie.js');
+var NormalItem = require('../src/normalItem.js');
 
-class BackstagePass extends AgedBrie {
+class BackstagePass extends NormalItem {
   update() {
     if (this.sellIn <= 0) {
       this.losesValue();
@@ -15,6 +15,16 @@ class BackstagePass extends AgedBrie {
       this.normalImprovement();
     }
     this.boundQuality();
+  }
+
+  normalImprovement() {
+    this.quality += 1;
+    this.sellIn -= 1;
+  }
+
+  doubleImprovement() {
+    this.quality += 2;
+    this.sellIn -= 1;
   }
 
   tripleImprovement() {

@@ -1,4 +1,3 @@
-var Item = require('../src/item.js');
 var NormalItem = require('../src/normalItem.js');
 
 class ConjuredItem extends NormalItem {
