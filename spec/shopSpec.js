@@ -14,5 +14,3 @@ describe("Shop", function() {
     expect(item.update).toHaveBeenCalled();
   });
 });
-
-module.exports = Shop;
