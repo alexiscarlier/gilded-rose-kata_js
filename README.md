@@ -3,6 +3,18 @@ Gilded Rose Kata
 
 This kata was sourced from [here](https://github.com/emilybache/GildedRose-Refactoring-Kata). The aim is a to a add a new feature to the existing code, via refactoring.
 
+## Install
+
+```
+npm install
+```
+
+## Test
+
+```
+npm test
+```
+
 ## Technologies Used
 * JavaScript
 * Jasmine
